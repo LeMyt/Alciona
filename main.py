@@ -22,6 +22,15 @@ async def get_help(message: Message):
 async def how_are_you(message: Message):
     await message.answer('OK!')
 
+@dp.message(F.photo)
+async def get_photo(message: Message):
+    await message.answer(f'ID фото: {message.photo[-1].file_id}')
+
+@dp.message(Command('get_photo'))
+async def get_photo(message: Message):
+    await message.answer_photo(photo='AgACAgIAAxkBAAID3GeuJ-KwXuECjrTayw7DxL7wuCdPAAJL7zEbXvdwSb1X9perIjDRAQADAgADeQADNgQ',
+                               caption='Это фото')
+
 async def main():
     await dp.start_polling(bot)
 
