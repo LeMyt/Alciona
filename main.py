@@ -10,9 +10,13 @@ from config import TOKEN
 bot = Bot(token=TOKEN)
 dp = Dispatcher()
 
+# @dp.message(CommandStart())
+# async def cmd_start(message: Message):
+#     await message.answer('Привет!')
+
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
-    await message.answer('Привет!')
+    await message.reply(f'Привет!\nТвой ID: {message.from_user.id}\nИмя: {message.from_user.first_name}')
 
 @dp.message(Command('help'))
 async def get_help(message: Message):
